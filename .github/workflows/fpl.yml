@@ -1,0 +1,65 @@
+name: FPL brief
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "Which brief to generate"
+        type: choice
+        options: [build, week]
+        default: build
+      horizon:
+        description: "Gameweeks to look ahead"
+        default: "6"
+  schedule:
+    # 06:00 UTC every Friday = 6pm NZST, before every deadline
+    - cron: "0 6 * * 5"
+
+permissions:
+  contents: write
+
+jobs:
+  brief:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Generate brief
+        env:
+          MODE: ${{ inputs.mode || 'week' }}
+          HORIZON: ${{ inputs.horizon || '6' }}
+          TEAM_ID: ${{ vars.FPL_TEAM_ID }}
+        run: |
+          set -euo pipefail
+          if [ "$MODE" = "week" ]; then
+            if [ -z "${TEAM_ID:-}" ]; then
+              echo "::error::Repository variable FPL_TEAM_ID is not set."
+              exit 1
+            fi
+            python fpl.py week --team "$TEAM_ID" --horizon "$HORIZON" \
+              --deep --compact -o fpl_brief.md
+          else
+            python fpl.py build --horizon "$HORIZON" --deep --compact -o fpl_brief.md
+          fi
+
+      - name: Commit the brief
+        run: |
+          set -euo pipefail
+          git config user.name  "fpl-bot"
+          git config user.email "fpl-bot@users.noreply.github.com"
+          git add fpl_brief.md
+          if git diff --staged --quiet; then
+            echo "No change to commit."
+          else
+            git commit -m "FPL brief $(date -u +%Y-%m-%d)"
+            git push
+          fi
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: fpl-brief
+          path: fpl_brief.md
