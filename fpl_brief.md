@@ -28,7 +28,7 @@ Horizon: 6 gameweeks. Evidence: last-season history.
 ## Captain shortlist
 1. Gabriel (ARS) — 6.4, 27%
 2. Rice (ARS) — 5.4, 22%
-3. Semenyo (MCI) — 5.3, 27%
+3. Semenyo (MCI) — 5.3, 28%
 4. Raya (ARS) — 5.0, 31%
 5. Thiago (BRE) — 4.8, 16%
 
@@ -45,6 +45,7 @@ Horizon: 6 gameweeks. Evidence: last-season history.
 - Kulusevski (TOT, £6.5m) — misses 6 of 6 GWs, back: unknown
 - Saliba (ARS, £6.0m) — misses 6 of 6 GWs, back: unknown
 - Mitoma (BHA, £6.0m) — misses 6 of 6 GWs, back: unknown
+- Minteh (BHA, £6.0m) — misses 6 of 6 GWs, back: 2026-11-28
 - Garner (EVE, £6.0m) — misses 1 of 6 GWs, back: 2026-08-22
 - Xavi (TOT, £6.0m) — misses 6 of 6 GWs, back: unknown
 
