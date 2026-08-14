@@ -20,7 +20,9 @@ from __future__ import annotations
 
 import argparse
 import json
+import datetime
 import os
+import re
 import sys
 import time
 import urllib.request
@@ -45,8 +47,53 @@ XI_MAX = {1: 1, 2: 5, 3: 5, 4: 3}
 FDR_ATT = {1: 1.22, 2: 1.11, 3: 1.00, 4: 0.89, 5: 0.79}
 FDR_DEF = {1: 1.34, 2: 1.16, 3: 1.00, 4: 0.85, 5: 0.72}
 
-# Bench is worth something, but not much. Weight for optimiser objective.
-BENCH_WEIGHT = 0.12
+# Bench is worth very little — money belongs in the XI.
+BENCH_WEIGHT = 0.03
+
+MONTHS = {m: i + 1 for i, m in enumerate(
+    ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+     "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])}
+
+
+def parse_return(news: str, today=None):
+    """Pull an expected return date out of FPL news text.
+
+    Returns a date, the string 'unknown' when FPL says the return date is
+    unknown, or None when the news implies no absence.
+    """
+    if not news:
+        return None
+    low = news.lower()
+    m = re.search(r"expected back (\d{1,2})\s+(\w{3})", low)
+    if m:
+        day = int(m.group(1))
+        mon = MONTHS.get(m.group(2)[:3].title())
+        if not mon:
+            return "unknown"
+        today = today or datetime.date.today()
+        try:
+            d = datetime.date(today.year, mon, day)
+        except ValueError:
+            return "unknown"
+        # a date well in the past means it wraps into next year
+        if d < today - datetime.timedelta(days=120):
+            d = datetime.date(today.year + 1, mon, day)
+        return d
+    if "unknown return date" in low or "return date unknown" in low:
+        return "unknown"
+    return None
+
+
+def gw_deadlines(bs: dict) -> dict:
+    out = {}
+    for ev in bs["events"]:
+        dt = ev.get("deadline_time")
+        if dt:
+            try:
+                out[ev["id"]] = datetime.date.fromisoformat(dt[:10])
+            except ValueError:
+                pass
+    return out
 
 
 # --------------------------------------------------------------------------
@@ -163,6 +210,7 @@ def score_players(bs: dict, fmap: dict, start_gw: int, horizon: int,
     """Attach a projected-points score over the horizon to every player."""
     elements = bs["elements"]
     played = sum(1 for e in bs["events"] if e.get("finished"))
+    deadlines = gw_deadlines(bs)
 
     floor = {}
     for et in POS:
@@ -225,11 +273,32 @@ def score_players(bs: dict, fmap: dict, start_gw: int, horizon: int,
             avail = 0.0
 
         tbl = FDR_DEF if et in (1, 2) else FDR_ATT
+
+        # --- absence handling -------------------------------------------
+        ret = parse_return(p.get("news", ""))
+        hard_out = status in ("i", "s", "u", "n")
+        miss = 0
+
         gw_scores = []
         total = 0.0
         for gw in range(start_gw, start_gw + horizon):
             diffs = fmap.get(p["team"], {}).get(gw, [])
             gw_pts = sum(per90 * share * avail * tbl.get(d, 1.0) for d in diffs)
+
+            unavailable = False
+            if ret == "unknown" and hard_out:
+                unavailable = True           # out indefinitely
+            elif isinstance(ret, datetime.date):
+                dl = deadlines.get(gw)
+                if dl and dl < ret:
+                    unavailable = True
+            elif hard_out and gw == start_gw:
+                unavailable = True           # flagged out, no stated return
+
+            if unavailable:
+                gw_pts = 0.0
+                miss += 1
+
             gw_scores.append(round(gw_pts, 2))
             total += gw_pts
 
@@ -250,6 +319,9 @@ def score_players(bs: dict, fmap: dict, start_gw: int, horizon: int,
             "form": float(p.get("form", 0) or 0),
             "confidence": confidence,
             "gw_scores": gw_scores,
+            "miss": miss,
+            "returns": (ret.isoformat() if isinstance(ret, datetime.date)
+                        else ("unknown" if ret == "unknown" else "")),
         })
     return scored
 
@@ -281,10 +353,13 @@ def best_xi(squad: list, key: str = "next_gw") -> tuple:
 
 
 def squad_objective(squad: list) -> float:
+    """Horizon points for the XI, plus the captain's doubled score each week."""
     xi, bench, tot = best_xi(squad, key="score")
     if xi is None:
         return -1e9
-    return tot + BENCH_WEIGHT * sum(p["score"] for p in bench)
+    n = min(len(p["gw_scores"]) for p in xi) if xi else 0
+    captain = sum(max(p["gw_scores"][i] for p in xi) for i in range(n))
+    return tot + captain + BENCH_WEIGHT * sum(p["score"] for p in bench)
 
 
 def _valid(squad: list) -> bool:
@@ -298,34 +373,88 @@ def _valid(squad: list) -> bool:
     return True
 
 
-def build_squad(pool: list, iterations: int = 4000) -> list:
+def build_squad(pool: list, iterations: int = 4000, max_miss: int = 1) -> list:
     """Greedy seed by value, then hill-climb single swaps."""
-    pool = [p for p in pool if p["avail"] > 0.4]
+    pool = [p for p in pool if p["avail"] > 0.4 and p["miss"] <= max_miss]
     pool.sort(key=lambda p: -(p["score"] / max(1, p["cost"])))
 
-    cheap_by_pos = {et: sorted(x["cost"] for x in pool if x["pos"] == et)
-                    for et in POS}
 
     squad: list = []
     need = dict(SQUAD_QUOTA)
     club: dict = {}
+    chosen: set = set()
+
+    def floor_for(pending: dict) -> int:
+        """Cheapest possible cost of filling `pending` slots from what's left.
+
+        Only counts players at clubs that aren't already full, otherwise the
+        estimate reserves money against someone we could never actually sign.
+        """
+        total = 0
+        for et, k in pending.items():
+            if k <= 0:
+                continue
+            left = [x["cost"] for x in pool
+                    if x["pos"] == et and x["id"] not in chosen
+                    and club.get(x["team"], 0) < MAX_PER_CLUB]
+            if len(left) < k:
+                return BUDGET * 10  # impossible
+            total += sum(sorted(left)[:k])
+        return total
+
     for p in pool:
         if need[p["pos"]] == 0 or club.get(p["team"], 0) >= MAX_PER_CLUB:
             continue
-        trial = squad + [p]
-        # cost of filling every remaining slot with the cheapest legal option
-        floor_cost = 0
-        for et, n in need.items():
-            k = n - (1 if et == p["pos"] else 0)
-            if k > 0:
-                floor_cost += sum(cheap_by_pos[et][:k])
-        if sum(x["cost"] for x in trial) + floor_cost > BUDGET:
+        chosen.add(p["id"])
+        pending = {et: n - (1 if et == p["pos"] else 0) for et, n in need.items()}
+        if sum(x["cost"] for x in squad) + p["cost"] + floor_for(pending) > BUDGET:
+            chosen.discard(p["id"])
             continue
-        squad = trial
+        squad.append(p)
         need[p["pos"]] -= 1
         club[p["team"]] = club.get(p["team"], 0) + 1
         if sum(need.values()) == 0:
             break
+
+    # Repair: fill any remaining gaps with the cheapest legal option left.
+    if sum(need.values()) > 0:
+        by_cost = sorted(pool, key=lambda p: p["cost"])
+        for et in POS:
+            while need[et] > 0:
+                spare = BUDGET - sum(x["cost"] for x in squad)
+                pick = next(
+                    (p for p in by_cost
+                     if p["pos"] == et and p["id"] not in chosen
+                     and p["cost"] <= spare
+                     and club.get(p["team"], 0) < MAX_PER_CLUB), None)
+                if pick is None:
+                    # Free up money by downgrading the priciest squad member
+                    # in another position, then retry.
+                    freed = False
+                    for victim in sorted(squad, key=lambda x: -x["cost"]):
+                        cheaper = next(
+                            (c for c in by_cost
+                             if c["pos"] == victim["pos"]
+                             and c["id"] not in chosen
+                             and c["cost"] < victim["cost"]
+                             and club.get(c["team"], 0) < MAX_PER_CLUB), None)
+                        if cheaper is None:
+                            continue
+                        squad.remove(victim)
+                        chosen.discard(victim["id"])
+                        club[victim["team"]] -= 1
+                        squad.append(cheaper)
+                        chosen.add(cheaper["id"])
+                        club[cheaper["team"]] = club.get(cheaper["team"], 0) + 1
+                        freed = True
+                        break
+                    if freed:
+                        continue
+                    break
+                squad.append(pick)
+                chosen.add(pick["id"])
+                need[et] -= 1
+                club[pick["team"]] = club.get(pick["team"], 0) + 1
 
     if len(squad) < 15:
         raise RuntimeError("Could not assemble a legal 15 from the pool.")
@@ -426,7 +555,7 @@ def cmd_build(args) -> str:
 
     print(f"Scoring players for GW{gw}..GW{gw + args.horizon - 1}", file=sys.stderr)
     pool = score_players(bs, fmap, gw, args.horizon, deep=args.deep)
-    squad = build_squad(pool)
+    squad = build_squad(pool, max_miss=args.max_miss)
     xi, bench, _ = best_xi(squad, key="next_gw")
 
     out = [f"# FPL squad build — GW{gw}", ""]
@@ -443,9 +572,20 @@ def cmd_build(args) -> str:
                                  key=lambda x: -x["next_gw"]), 1):
         out.append(f"{i}. {p['name']} ({teams[p['team']]}) — {p['next_gw']:.1f}")
     out.append("")
+    sidelined = sorted([p for p in pool if p["miss"] > 0 and p["cost"] >= 60],
+                       key=lambda p: -p["cost"])[:10]
+    if sidelined:
+        out.append("## Sidelined (excluded or downweighted)")
+        for p in sidelined:
+            when = p["returns"] or "no stated return"
+            out.append(f"- {p['name']} ({teams[p['team']]}, {fmt_money(p['cost'])}) "
+                       f"— misses {p['miss']} of {args.horizon} GWs, back: {when}")
+        out.append("")
+
     out.append("## Near misses (next best by value)")
     ids = {p["id"] for p in squad}
-    misses = [p for p in pool if p["id"] not in ids and p["avail"] > 0.6]
+    misses = [p for p in pool if p["id"] not in ids and p["avail"] > 0.6
+              and p["miss"] == 0]
     misses.sort(key=lambda p: -(p["score"] / max(1, p["cost"])))
     for p in misses[:12]:
         out.append(f"- {p['name']} ({teams[p['team']]}, {POS[p['pos']]}, "
@@ -520,11 +660,13 @@ def cmd_week(args) -> str:
     out.append("")
 
     # flags
-    flags = [p for p in squad if p["avail"] < 0.75]
+    flags = [p for p in squad if p["avail"] < 0.75 or p["miss"] > 0]
     if flags:
         out.append("## Flagged")
         for p in flags:
             note = p["news"] or f"status {p['status']}"
+            if p["miss"] > 0:
+                note += f" (misses ~{p['miss']} GW)"
             out.append(f"- **{p['name']}** ({teams[p['team']]}) — {note}")
         out.append("")
 
@@ -625,6 +767,8 @@ def main() -> None:
                    help="pull last season's per-player history (slower, better)")
     b.add_argument("--compact", action="store_true",
                    help="phone-friendly output (lists instead of wide tables)")
+    b.add_argument("--max-miss", type=int, default=1, dest="max_miss",
+                   help="exclude players expected to miss more than N gameweeks")
     b.add_argument("-o", "--out", default="fpl_brief.md")
     b.set_defaults(fn=cmd_build)
 
