@@ -18,11 +18,18 @@ on:
 permissions:
   contents: write
 
+# Never let two runs race each other to push.
+concurrency:
+  group: fpl-brief
+  cancel-in-progress: false
+
 jobs:
   brief:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-python@v5
         with:
@@ -46,20 +53,43 @@ jobs:
             python fpl.py build --horizon "$HORIZON" --deep --compact -o fpl_brief.md
           fi
 
-      - name: Commit the brief
-        run: |
-          set -euo pipefail
-          git config user.name  "fpl-bot"
-          git config user.email "fpl-bot@users.noreply.github.com"
-          git add fpl_brief.md
-          if git diff --staged --quiet; then
-            echo "No change to commit."
-          else
-            git commit -m "FPL brief $(date -u +%Y-%m-%d)"
-            git push
-          fi
-
+      # Upload first, so the brief survives even if the commit fails.
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: fpl-brief
           path: fpl_brief.md
+          if-no-files-found: warn
+
+      - name: Commit the brief
+        continue-on-error: true
+        run: |
+          set -uo pipefail
+          git config user.name  "fpl-bot"
+          git config user.email "fpl-bot@users.noreply.github.com"
+
+          git add fpl_brief.md
+          if git diff --staged --quiet; then
+            echo "No change to commit."
+            exit 0
+          fi
+          git commit -m "FPL brief $(date -u +%Y-%m-%d)"
+
+          # main may have moved while we were running - rebase and retry.
+          for attempt in 1 2 3; do
+            if git push origin HEAD:main; then
+              echo "Pushed on attempt $attempt."
+              exit 0
+            fi
+            echo "Push rejected, rebasing onto latest main (attempt $attempt)..."
+            git fetch origin main
+            if ! git rebase origin/main; then
+              git checkout --ours fpl_brief.md || true
+              git add fpl_brief.md
+              git rebase --continue || git rebase --abort
+            fi
+            sleep 3
+          done
+
+          echo "::warning::Could not push the brief - download the workflow artifact instead."
+          exit 1
