@@ -37,6 +37,17 @@ Horizon: 6 gameweeks. Evidence: last-season history.
 2. E.Le Fée (SUN) — 4.3
 3. Calvert-Lewin (LEE) — 3.7
 
+## Sidelined (excluded or downweighted)
+- Kroupi.Jr (BOU, £7.5m) — misses 6 of 6 GWs, back: unknown
+- Ekitiké (LIV, £7.5m) — misses 6 of 6 GWs, back: unknown
+- J.Timber (ARS, £6.5m) — misses 6 of 6 GWs, back: unknown
+- Rodrigo (MCI, £6.5m) — misses 6 of 6 GWs, back: unknown
+- Kulusevski (TOT, £6.5m) — misses 6 of 6 GWs, back: unknown
+- Saliba (ARS, £6.0m) — misses 6 of 6 GWs, back: unknown
+- Mitoma (BHA, £6.0m) — misses 6 of 6 GWs, back: unknown
+- Garner (EVE, £6.0m) — misses 1 of 6 GWs, back: 2026-08-22
+- Xavi (TOT, £6.0m) — misses 6 of 6 GWs, back: unknown
+
 ## Near misses (next best by value)
 - Truffert (BOU, DEF, £5.5m) — horizon 23.5
 - De Cuyper (BHA, DEF, £4.5m) — horizon 18.4
