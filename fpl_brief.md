@@ -23,7 +23,7 @@ Horizon: 6 gameweeks. Evidence: last-season history.
 - De Cuyper · BHA · £4.5m · 3.1
 - Obi · MUN · £4.5m · 1.5
 - Neave · NEW · £4.5m · 1.2
-- Woodman · LIV · £4.0m · 1.7
+- Heaton · MUN · £4.0m · 2.0
 
 ## Captain shortlist
 1. B.Fernandes (MUN) — 6.9, 48%
@@ -36,6 +36,12 @@ Horizon: 6 gameweeks. Evidence: last-season history.
 1. De Cuyper (BHA) — 3.1
 2. Obi (MUN) — 1.5
 3. Neave (NEW) — 1.2
+
+## Club concentration
+- ARS: 3 players (2 defensive — shared clean sheet)
+- MCI: 3 players
+- MUN: 3 players
+_Correlation penalty applied: 2.6 pts_
 
 ## Sidelined (excluded or downweighted)
 - Kroupi.Jr (BOU, £7.5m) — misses 3 of 6 GWs, back: unknown
