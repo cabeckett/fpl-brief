@@ -50,6 +50,14 @@ FDR_DEF = {1: 1.34, 2: 1.16, 3: 1.00, 4: 0.85, 5: 0.72}
 # Bench is worth very little — money belongs in the XI.
 BENCH_WEIGHT = 0.03
 
+# Correlation penalties. A clean sheet is ONE team-level event paying 4 points
+# to every defender and the keeper at once, so stacking a defence multiplies
+# variance without multiplying expected value. Everything else in this model
+# treats players as independent, which understates that risk.
+DEF_STACK = 0.10   # per extra GK/DEF from the same club
+ATT_STACK = 0.03   # per attacking asset beyond two from the same club
+STACK_SCALE = 1.0  # --stack-penalty 0 disables
+
 MONTHS = {m: i + 1 for i, m in enumerate(
     ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
      "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])}
@@ -356,14 +364,40 @@ def best_xi(squad: list, key: str = "next_gw") -> tuple:
     return best
 
 
+def stack_risk(squad: list) -> float:
+    """Penalty for correlated holdings from the same club.
+
+    Defensive assets share a single clean-sheet event, so the second and
+    subsequent ones are discounted hardest — a keeper plus a defender from
+    one club is the most concentrated pair in the game. Attacking assets
+    correlate far less (a goal and an assist can pay two of your players),
+    so only the third onward is penalised.
+    """
+    if STACK_SCALE == 0:
+        return 0.0
+    by_club: dict = {}
+    for p in squad:
+        by_club.setdefault(p["team"], []).append(p)
+    pen = 0.0
+    for group in by_club.values():
+        d = sorted(p["score"] for p in group if p["pos"] in (1, 2))
+        a = sorted(p["score"] for p in group if p["pos"] in (3, 4))
+        if len(d) > 1:
+            pen += sum(d[:-1]) * DEF_STACK
+        if len(a) > 2:
+            pen += sum(a[:-2]) * ATT_STACK
+    return pen * STACK_SCALE
+
+
 def squad_objective(squad: list) -> float:
-    """Horizon points for the XI, plus the captain's doubled score each week."""
+    """Horizon points for the XI, plus captaincy, minus correlation risk."""
     xi, bench, tot = best_xi(squad, key="score")
     if xi is None:
         return -1e9
     n = min(len(p["gw_scores"]) for p in xi) if xi else 0
     captain = sum(max(p["gw_scores"][i] for p in xi) for i in range(n))
-    return tot + captain + BENCH_WEIGHT * sum(p["score"] for p in bench)
+    return (tot + captain + BENCH_WEIGHT * sum(p["score"] for p in bench)
+            - stack_risk(squad))
 
 
 def _valid(squad: list) -> bool:
@@ -610,6 +644,22 @@ def cmd_build(args) -> str:
                                  key=lambda x: -x["next_gw"]), 1):
         out.append(f"{i}. {p['name']} ({teams[p['team']]}) — {p['next_gw']:.1f}")
     out.append("")
+    from collections import Counter as _C
+    clubs = _C(p["team"] for p in squad)
+    conc = []
+    for t, n in clubs.most_common():
+        if n < 2:
+            continue
+        grp = [p for p in squad if p["team"] == t]
+        dn = sum(1 for p in grp if p["pos"] in (1, 2))
+        conc.append(f"- {teams[t]}: {n} players"
+                    + (f" ({dn} defensive — shared clean sheet)" if dn > 1 else ""))
+    if conc:
+        out.append("## Club concentration")
+        out.extend(conc)
+        out.append(f"_Correlation penalty applied: {stack_risk(squad):.1f} pts_")
+        out.append("")
+
     sidelined = sorted([p for p in pool if p["miss"] > 0 and p["cost"] >= 60],
                        key=lambda p: -p["cost"])[:10]
     if sidelined:
@@ -809,6 +859,8 @@ def main() -> None:
                    help="exclude players expected to miss more than N gameweeks")
     b.add_argument("--unknown-miss", type=int, default=3, dest="unknown_miss",
                    help="GWs to assume out when FPL states no return date")
+    b.add_argument("--stack-penalty", type=float, default=1.0, dest="stack",
+                   help="weight on same-club correlation risk (0 disables)")
     b.add_argument("-o", "--out", default="fpl_brief.md")
     b.set_defaults(fn=cmd_build)
 
@@ -819,6 +871,8 @@ def main() -> None:
     w.add_argument("--deep", action="store_true")
     w.add_argument("--compact", action="store_true",
                    help="phone-friendly output (lists instead of wide tables)")
+    w.add_argument("--stack-penalty", type=float, default=1.0, dest="stack",
+                   help="weight on same-club correlation risk (0 disables)")
     w.add_argument("-o", "--out", default="fpl_brief.md")
     w.set_defaults(fn=cmd_week)
 
@@ -827,8 +881,9 @@ def main() -> None:
     r.set_defaults(fn=cmd_refresh)
 
     args = ap.parse_args()
-    global COMPACT
+    global COMPACT, STACK_SCALE
     COMPACT = getattr(args, "compact", False)
+    STACK_SCALE = getattr(args, "stack", 1.0)
     try:
         text = args.fn(args)
     except RuntimeError as e:
