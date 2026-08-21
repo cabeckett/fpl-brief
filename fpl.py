@@ -104,6 +104,21 @@ def gw_deadlines(bs: dict) -> dict:
     return out
 
 
+def gw_deadline_datetimes(bs: dict) -> dict:
+    """Full timezone-aware deadlines, for gating rather than the date-only
+    comparisons gw_deadlines() does for injury returns."""
+    out = {}
+    for ev in bs["events"]:
+        dt = ev.get("deadline_time")
+        if dt:
+            try:
+                out[ev["id"]] = datetime.datetime.fromisoformat(
+                    dt.replace("Z", "+00:00"))
+            except ValueError:
+                pass
+    return out
+
+
 # --------------------------------------------------------------------------
 # fetching
 # --------------------------------------------------------------------------
@@ -575,14 +590,20 @@ def render_squad(squad: list, teams: dict) -> str:
              f"/ {fmt_money(BUDGET)}\n"]
 
     if COMPACT:
+        # Blank line before each label: a bold line directly under a list
+        # item with no blank line is "lazy continuation" text in CommonMark
+        # and gets swallowed into the previous bullet rather than starting
+        # a new block — that's what glued "DEF"/"MID" onto the wrong player.
         for et in (1, 2, 3, 4):
             group = [p for p in xi if p["pos"] == et]
             if not group:
                 continue
+            lines.append("")
             lines.append(f"**{POS[et]}**")
             for p in sorted(group, key=lambda x: -x["next_gw"]):
                 lines.append(f"- {p['name']} · {teams[p['team']]} · "
                              f"{fmt_money(p['cost'])} · {p['next_gw']:.1f}")
+        lines.append("")
         lines.append("**Bench**")
         for p in sorted(bench, key=lambda x: (x["pos"] == 1, -x["next_gw"])):
             lines.append(f"- {p['name']} · {teams[p['team']]} · "
@@ -844,6 +865,31 @@ def cmd_week(args) -> str:
     return "\n".join(out)
 
 
+def cmd_next_deadline(args) -> None:
+    """Predicate for the workflow: is a deadline within --window hours?
+
+    Exits 0 (due) or 1 (not due) rather than returning text, so a daily
+    cron can call this first and skip the real work most days. This is
+    what lets the schedule stop caring which weekday a deadline lands on.
+    """
+    bs = bootstrap()
+    deadlines = gw_deadline_datetimes(bs)
+    now = datetime.datetime.now(datetime.timezone.utc)
+    upcoming = sorted((d, gw) for gw, d in deadlines.items() if d >= now)
+    if not upcoming:
+        print("No upcoming deadline found.", file=sys.stderr)
+        sys.exit(1)
+    deadline, gw = upcoming[0]
+    hours = (deadline - now).total_seconds() / 3600
+    if hours <= args.window:
+        print(f"GW{gw} deadline in {hours:.1f}h — within the "
+              f"{args.window}h window.", file=sys.stderr)
+        sys.exit(0)
+    print(f"GW{gw} deadline in {hours:.1f}h — not yet within the "
+          f"{args.window}h window.", file=sys.stderr)
+    sys.exit(1)
+
+
 def cmd_refresh(args) -> str:
     if CACHE.exists():
         for f in CACHE.glob("*.json"):
@@ -887,6 +933,12 @@ def main() -> None:
     w.add_argument("-o", "--out", default="fpl_brief.md")
     w.set_defaults(fn=cmd_week)
 
+    nd = sub.add_parser("next-deadline",
+                        help="exit 0 if a deadline is within --window hours")
+    nd.add_argument("--window", type=float, default=36.0,
+                    help="hours before deadline counted as 'due' (default 36)")
+    nd.set_defaults(fn=cmd_next_deadline)
+
     r = sub.add_parser("refresh", help="clear and refetch cached data")
     r.add_argument("-o", "--out", default=None)
     r.set_defaults(fn=cmd_refresh)
@@ -895,6 +947,11 @@ def main() -> None:
     global COMPACT, STACK_SCALE
     COMPACT = getattr(args, "compact", False)
     STACK_SCALE = getattr(args, "stack", 1.0)
+
+    if args.cmd == "next-deadline":
+        cmd_next_deadline(args)  # exits internally, never returns
+        return
+
     try:
         text = args.fn(args)
     except RuntimeError as e:
