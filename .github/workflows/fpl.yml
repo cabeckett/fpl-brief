@@ -12,8 +12,10 @@ on:
         description: "Gameweeks to look ahead"
         default: "6"
   schedule:
-    # 06:00 UTC every Friday = 6pm NZST, before every deadline
-    - cron: "0 6 * * 5"
+    # Every day at 06:00 UTC. The gate step below decides whether a
+    # deadline is actually close enough to be worth acting on, so this
+    # never needs editing again when deadlines move off Friday.
+    - cron: "0 6 * * *"
 
 permissions:
   contents: write
@@ -34,7 +36,88 @@ jobs:
         with:
           python-version: "3.12"
 
+      # Manual runs always go ahead. Scheduled runs only proceed once a
+      # deadline is within 36 hours - this is what makes the daily cron
+      # safe: most days it does nothing but a quick API check.
+      - name: Check whether a deadline is near
+        id: gate
+        run: |
+          set -uo pipefail
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "Manually triggered - running regardless of deadline."
+            echo "due=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          if python fpl.py next-deadline --window 36; then
+            echo "due=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "due=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Generate brief
+        if: steps.gate.outputs.due == 'true'
+        env:
+          MODE: ${{ inputs.mode || 'week' }}
+          HORIZON: ${{ inputs.horizon || '6' }}
+          TEAM_ID: ${{ vars.FPL_TEAM_ID }}
+        run: |
+          set -euo pipefail
+          if [ "$MODE" = "week" ]; then
+            if [ -z "${TEAM_ID:-}" ]; then
+              echo "::error::Repository variable FPL_TEAM_ID is not set."
+              exit 1
+            fi
+            python fpl.py week --team "$TEAM_ID" --horizon "$HORIZON" \
+              --deep --compact -o fpl_brief.md
+          else
+            python fpl.py build --horizon "$HORIZON" --deep --compact -o fpl_brief.md
+          fi
+
+      - name: Show brief on run page
+        if: steps.gate.outputs.due == 'true'
+        run: cat fpl_brief.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Note skip on run page
+        if: steps.gate.outputs.due == 'false'
+        run: echo "No deadline within 36h yet - nothing to do today." >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/upload-artifact@v7
+        if: steps.gate.outputs.due == 'true'
+        continue-on-error: true
+        with:
+          name: fpl-brief-${{ github.run_attempt }}
+          path: fpl_brief.md
+          if-no-files-found: warn
+          overwrite: true
+
+      # Generated file, no real merge possible - always overwrite onto
+      # the latest remote rather than rebase (see commit history for why).
+      - name: Commit the brief
+        if: steps.gate.outputs.due == 'true'
+        continue-on-error: true
+        run: |
+          set -uo pipefail
+          git config user.name  "fpl-bot"
+          git config user.email "fpl-bot@users.noreply.github.com"
+          cp fpl_brief.md "$RUNNER_TEMP/fpl_brief.md"
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git checkout -B main origin/main
+            cp "$RUNNER_TEMP/fpl_brief.md" fpl_brief.md
+            git add fpl_brief.md
+            if git diff --staged --quiet; then
+              echo "Brief unchanged, nothing to commit."
+              exit 0
+            fi
+            git commit -m "FPL brief $(date -u +%Y-%m-%d)"
+            if git push origin main; then
+              echo "Pushed on attempt $attempt."
+              exit 0
+            fi
+            echo "Push rejected; retrying from latest (attempt $attempt)."
+            sleep 3
+          done
+          echo "::warning::Push failed - the brief is on the run page and in the artifact."      - name: Generate brief
         env:
           MODE: ${{ inputs.mode || 'week' }}
           HORIZON: ${{ inputs.horizon || '6' }}
