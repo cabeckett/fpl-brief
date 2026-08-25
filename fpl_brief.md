@@ -1,6 +1,6 @@
 # FPL week brief — GW2
 
-**Glengad** · overall rank 3,847,337
+**Glengad** · overall rank 3,750,327
 Bank £0.0m  
 _(no cookie set — prices are current, not your selling prices)_
 
@@ -20,9 +20,9 @@ _(no cookie set — prices are current, not your selling prices)_
 **MID**
 - B.Fernandes · MUN · £12.0m · 6.9
 - Semenyo · MCI · £8.5m · 5.1
-- Anderson · MCI · £6.5m · 4.4
-- Gibbs-White · NFO · £8.0m · 4.2
 - Rice · ARS · £7.5m · 4.0
+- Anderson · MCI · £6.5m · 3.3
+- Gibbs-White · NFO · £8.0m · 3.1
 
 **FWD**
 - João Pedro · CHE · £7.5m · 4.7
@@ -36,21 +36,21 @@ _(no cookie set — prices are current, not your selling prices)_
 ## Transfer options (1 move)
 | Out | In | Gain (horizon) | Bank after |
 |---|---|---|---|
-| Dubravka (TOT) | Dovin (COV) | +1.1 | £0.0m |
-| Dubravka (TOT) | Lecomte (FUL) | +1.0 | £0.0m |
-| Dubravka (TOT) | McNally (FUL) | +1.0 | £0.0m |
-| Dubravka (TOT) | Matthews (CRY) | +1.0 | £0.0m |
-| Dubravka (TOT) | Phillips (HUL) | +1.0 | £0.0m |
-| Dubravka (TOT) | Forster (BOU) | +1.0 | £0.0m |
-| Dubravka (TOT) | Dennis (BOU) | +1.0 | £0.0m |
-| Dubravka (TOT) | Palmer (IPS) | +1.0 | £0.0m |
+| Gibbs-White (NFO) | Rogers (CHE) | +5.6 | £0.5m |
+| Gibbs-White (NFO) | Szoboszlai (LIV) | +4.4 | £1.0m |
+| Anderson (MCI) | Garner (EVE) | +3.5 | £0.5m |
+| Gibbs-White (NFO) | Enzo (CHE) | +3.5 | £1.0m |
+| Gibbs-White (NFO) | Garner (EVE) | +3.2 | £2.0m |
+| Anderson (MCI) | Wilson (LEE) | +2.8 | £0.0m |
+| Gibbs-White (NFO) | Wilson (LEE) | +2.5 | £1.5m |
+| Gibbs-White (NFO) | Mbeumo (MUN) | +2.0 | £0.0m |
 
 ## Captain
-1. B.Fernandes (MUN) — 6.9, 52%
+1. B.Fernandes (MUN) — 6.9, 50%
 2. Semenyo (MCI) — 5.1, 26%
 3. Senesi (TOT) — 5.0, 8%
-4. João Pedro (CHE) — 4.7, 64%
-5. Virgil (LIV) — 4.4, 19%
+4. João Pedro (CHE) — 4.7, 65%
+5. Virgil (LIV) — 4.4, 20%
 
 ## Bench order
 1. De Cuyper (BHA) — 1.6
