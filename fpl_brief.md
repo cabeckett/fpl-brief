@@ -1,11 +1,11 @@
 # FPL week brief — GW2
 
-**Glengad** · overall rank 3,750,327
+**Glengad** · overall rank 4,375,840
 Bank £0.0m  
 _(no cookie set — prices are current, not your selling prices)_
 
 ## Current squad
-**Cost:** £100.0m / £100.0m
+**Cost:** £100.1m / £100.0m
 
 
 **GK**
@@ -28,7 +28,7 @@ _(no cookie set — prices are current, not your selling prices)_
 - João Pedro · CHE · £7.5m · 4.7
 
 **Bench**
-- De Cuyper · BHA · £4.5m · 1.6
+- De Cuyper · BHA · £4.6m · 1.6
 - Obi · MUN · £4.5m · 1.5
 - Neave · NEW · £4.5m · 1.4
 - Dubravka · TOT · £4.0m · 2.0
@@ -46,10 +46,10 @@ _(no cookie set — prices are current, not your selling prices)_
 | Gibbs-White (NFO) | Mbeumo (MUN) | +2.0 | £0.0m |
 
 ## Captain
-1. B.Fernandes (MUN) — 6.9, 50%
-2. Semenyo (MCI) — 5.1, 26%
+1. B.Fernandes (MUN) — 6.9, 49%
+2. Semenyo (MCI) — 5.1, 25%
 3. Senesi (TOT) — 5.0, 8%
-4. João Pedro (CHE) — 4.7, 65%
+4. João Pedro (CHE) — 4.7, 66%
 5. Virgil (LIV) — 4.4, 20%
 
 ## Bench order
@@ -59,5 +59,5 @@ _(no cookie set — prices are current, not your selling prices)_
 
 ## Chip watch
 - No blanks or doubles in the horizon.
-- Bench Boost value this week: **6.4 pts** (hold)
+- Bench Boost value this week: **6.5 pts** (hold)
 - Triple Captain on B.Fernandes would add **6.9 pts** (wait for a better week)
