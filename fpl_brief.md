@@ -1,11 +1,11 @@
 # FPL week brief — GW2
 
-**Glengad** · overall rank 4,375,840
+**Glengad** · overall rank 4,383,525
 Bank £0.0m  
 _(no cookie set — prices are current, not your selling prices)_
 
 ## Current squad
-**Cost:** £100.1m / £100.0m
+**Cost:** £100.2m / £100.0m
 
 
 **GK**
@@ -20,12 +20,12 @@ _(no cookie set — prices are current, not your selling prices)_
 **MID**
 - B.Fernandes · MUN · £12.0m · 6.9
 - Semenyo · MCI · £8.5m · 5.1
+- Anderson · MCI · £6.5m · 4.4
 - Rice · ARS · £7.5m · 4.0
-- Anderson · MCI · £6.5m · 3.3
 - Gibbs-White · NFO · £8.0m · 3.1
 
 **FWD**
-- João Pedro · CHE · £7.5m · 4.7
+- João Pedro · CHE · £7.6m · 4.7
 
 **Bench**
 - De Cuyper · BHA · £4.6m · 1.6
@@ -38,18 +38,18 @@ _(no cookie set — prices are current, not your selling prices)_
 |---|---|---|---|
 | Gibbs-White (NFO) | Rogers (CHE) | +5.6 | £0.5m |
 | Gibbs-White (NFO) | Szoboszlai (LIV) | +4.4 | £1.0m |
-| Anderson (MCI) | Garner (EVE) | +3.5 | £0.5m |
 | Gibbs-White (NFO) | Enzo (CHE) | +3.5 | £1.0m |
 | Gibbs-White (NFO) | Garner (EVE) | +3.2 | £2.0m |
-| Anderson (MCI) | Wilson (LEE) | +2.8 | £0.0m |
 | Gibbs-White (NFO) | Wilson (LEE) | +2.5 | £1.5m |
 | Gibbs-White (NFO) | Mbeumo (MUN) | +2.0 | £0.0m |
+| Gibbs-White (NFO) | Dewsbury-Hall (EVE) | +1.3 | £1.5m |
+| Gibbs-White (NFO) | Gravenberch (LIV) | +1.2 | £2.0m |
 
 ## Captain
 1. B.Fernandes (MUN) — 6.9, 49%
-2. Semenyo (MCI) — 5.1, 25%
+2. Semenyo (MCI) — 5.1, 24%
 3. Senesi (TOT) — 5.0, 8%
-4. João Pedro (CHE) — 4.7, 66%
+4. João Pedro (CHE) — 4.7, 67%
 5. Virgil (LIV) — 4.4, 20%
 
 ## Bench order
