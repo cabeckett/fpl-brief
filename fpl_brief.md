@@ -1,6 +1,6 @@
 # FPL week brief — GW3
 
-**Glengad** · overall rank 3,153,663
+**Glengad** · overall rank 3,286,886
 Bank £0.5m  
 _(no cookie set — prices are current, not your selling prices)_
 
@@ -14,7 +14,7 @@ _(no cookie set — prices are current, not your selling prices)_
 **DEF**
 - Virgil · LIV · £6.5m · 5.2
 - Guéhi · MCI · £6.0m · 5.1
-- Senesi · TOT · £6.0m · 4.3
+- Senesi · TOT · £5.9m · 4.3
 - Gabriel · ARS · £8.0m · 4.2
 
 **MID**
@@ -25,7 +25,7 @@ _(no cookie set — prices are current, not your selling prices)_
 - Rogers · CHE · £7.5m · 3.4
 
 **FWD**
-- João Pedro · CHE · £7.6m · 3.4
+- João Pedro · CHE · £7.7m · 3.4
 
 **Bench**
 - De Cuyper · BHA · £4.7m · 2.2
@@ -37,7 +37,7 @@ _(no cookie set — prices are current, not your selling prices)_
 | Out | In | Gain (horizon) | Bank after |
 |---|---|---|---|
 | Rogers (CHE) | Gibbs-White (NFO) | +2.5 | £0.1m |
-| João Pedro (CHE) | Thiago (BRE) | +2.1 | £0.1m |
+| João Pedro (CHE) | Thiago (BRE) | +2.0 | £0.2m |
 | Dubravka (TOT) | Benitez (CRY) | +1.1 | £0.0m |
 | Dubravka (TOT) | Gillespie (NEW) | +1.1 | £0.0m |
 | Dubravka (TOT) | Jaouen (NEW) | +1.1 | £0.0m |
@@ -46,11 +46,11 @@ _(no cookie set — prices are current, not your selling prices)_
 | Dubravka (TOT) | Leno (FUL) | +1.0 | £0.0m |
 
 ## Captain
-1. B.Fernandes (MUN) — 6.2, 48%
-2. Semenyo (MCI) — 5.6, 22%
+1. B.Fernandes (MUN) — 6.2, 49%
+2. Semenyo (MCI) — 5.6, 20%
 3. Virgil (LIV) — 5.2, 18%
 4. Guéhi (MCI) — 5.1, 19%
-5. Anderson (MCI) — 4.8, 6%
+5. Anderson (MCI) — 4.8, 5%
 
 ## Bench order
 1. De Cuyper (BHA) — 2.2
