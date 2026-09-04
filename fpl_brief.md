@@ -46,7 +46,7 @@ _(no cookie set — prices are current, not your selling prices)_
 | Dubravka (TOT) | Leno (FUL) | +1.0 | £0.0m |
 
 ## Captain
-1. B.Fernandes (MUN) — 6.2, 49%
+1. B.Fernandes (MUN) — 6.2, 48%
 2. Semenyo (MCI) — 5.6, 20%
 3. Virgil (LIV) — 5.2, 18%
 4. Guéhi (MCI) — 5.1, 19%
