@@ -1,6 +1,6 @@
 # FPL week brief — GW5
 
-**Glengad** · overall rank 3,429,999
+**Glengad** · overall rank 3,429,979
 Bank £1.5m  
 _(no cookie set — prices are current, not your selling prices)_
 
@@ -53,7 +53,7 @@ _(no cookie set — prices are current, not your selling prices)_
 1. B.Fernandes (MUN) — 7.1, 41%
 2. Guéhi (MCI) — 5.7, 18%
 3. Gabriel (ARS) — 5.2, 23%
-4. Rogers (CHE) — 5.2, 38%
+4. Rogers (CHE) — 5.2, 39%
 5. Raya (ARS) — 5.2, 41%
 
 ## Bench order
