@@ -1,6 +1,6 @@
-# FPL week brief — GW5
+# FPL week brief — GW6
 
-**Glengad** · overall rank 3,429,979
+**Glengad** · overall rank 3,413,873
 Bank £1.5m  
 _(no cookie set — prices are current, not your selling prices)_
 
@@ -13,55 +13,56 @@ _(no cookie set — prices are current, not your selling prices)_
 
 
 **GK**
-- Raya · ARS · £6.0m · 5.2
+- Raya · ARS · £6.0m · 5.7
 
 **DEF**
-- Guéhi · MCI · £6.0m · 5.7
-- Gabriel · ARS · £8.0m · 5.2
-- Hall · NEW · £5.2m · 4.5
-- De Cuyper · BHA · £4.9m · 4.2
-- Virgil · LIV · £6.5m · 4.2
+- Hall · NEW · £5.2m · 5.7
+- Gabriel · ARS · £8.0m · 5.6
+- De Cuyper · BHA · £4.9m · 5.6
+- Guéhi · MCI · £6.0m · 4.2
+- Virgil · LIV · £6.5m · 3.5
 
 **MID**
 - B.Fernandes · MUN · £12.0m · 7.1
 - Rogers · CHE · £7.7m · 5.2
-- Semenyo · MCI · £8.4m · 5.0
-- Rice · ARS · £7.4m · 4.1
+- Rice · ARS · £7.4m · 4.8
+- Semenyo · MCI · £8.4m · 4.0
 
 **FWD**
 - João Pedro · CHE · £7.8m · 4.4
 
 **Bench**
-- Anderson · MCI · £6.3m · 3.5
+- Anderson · MCI · £6.3m · 2.9
 - Obi · MUN · £4.5m · 0.0
 - Neave · NEW · £4.5m · 0.0
-- Dubravka · TOT · £4.0m · 1.7
+- Dubravka · TOT · £4.0m · 1.4
 
 ## Transfer options (1 move)
 | Out | In | Gain (horizon) | Bank after |
 |---|---|---|---|
-| Virgil (LIV) | Tarkowski (EVE) | +7.4 | £1.9m |
-| Hall (NEW) | Tarkowski (EVE) | +7.0 | £0.6m |
-| Rice (ARS) | Gibbs-White (NFO) | +6.9 | £0.9m |
-| Semenyo (MCI) | Palmer (CHE) | +6.4 | £0.2m |
-| De Cuyper (BHA) | Tarkowski (EVE) | +4.9 | £0.3m |
-| Anderson (MCI) | Tavernier (BOU) | +4.9 | £1.7m |
-| João Pedro (CHE) | Isak (LIV) | +4.9 | £0.2m |
-| Anderson (MCI) | Schade (BRE) | +4.8 | £1.7m |
+| Virgil (LIV) | Tarkowski (EVE) | +13.5 | £1.9m |
+| Anderson (MCI) | Groß (BHA) | +13.5 | £2.0m |
+| Rice (ARS) | Groß (BHA) | +10.9 | £3.1m |
+| Gabriel (ARS) | Tarkowski (EVE) | +10.2 | £3.4m |
+| Semenyo (MCI) | Groß (BHA) | +9.7 | £4.1m |
+| Anderson (MCI) | Schade (BRE) | +9.5 | £1.7m |
+| Hall (NEW) | Tarkowski (EVE) | +7.9 | £0.6m |
+| Rice (ARS) | Schade (BRE) | +6.9 | £2.8m |
 
 ## Captain
-1. B.Fernandes (MUN) — 7.1, 41%
-2. Guéhi (MCI) — 5.7, 18%
-3. Gabriel (ARS) — 5.2, 23%
-4. Rogers (CHE) — 5.2, 39%
-5. Raya (ARS) — 5.2, 41%
+1. B.Fernandes (MUN) — 7.1, 40%
+2. Raya (ARS) — 5.7, 42%
+3. Hall (NEW) — 5.7, 15%
+4. Gabriel (ARS) — 5.6, 23%
+5. De Cuyper (BHA) — 5.6, 26%
 
 ## Bench order
-1. Anderson (MCI) — 3.5
+1. Anderson (MCI) — 2.9
 2. Obi (MUN) — 0.0
 3. Neave (NEW) — 0.0
 
 ## Chip watch
 - No blanks or doubles in the horizon.
-- Bench Boost value this week: **5.3 pts** (hold)
+- Bench Boost value this week: **4.3 pts** (hold)
 - Triple Captain on B.Fernandes would add **7.1 pts** (wait for a better week)
+- Squad has multiple problems — wildcard is on the table.
