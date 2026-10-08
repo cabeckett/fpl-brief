@@ -1,68 +1,76 @@
-# FPL week brief — GW6
+# FPL squad build — GW6
 
-**Glengad** · overall rank 3,413,873
-Bank £1.5m  
-_(no cookie set — prices are current, not your selling prices)_
+Horizon: 6 gameweeks. Evidence: last-season history.
 
-## Flagged
-- **Obi** (MUN) — Has joined Willem II on loan for the rest of the season (misses ~1 GW)
-- **Neave** (NEW) — Has joined Wolves on loan for the rest of the season (misses ~1 GW)
-
-## Current squad
-**Cost:** £99.2m / £100.0m
+**Cost:** £100.0m / £100.0m
 
 
 **GK**
-- Raya · ARS · £6.0m · 5.7
+- Tzolakis · HUL · £4.7m · 5.1
 
 **DEF**
-- Hall · NEW · £5.2m · 5.7
-- Gabriel · ARS · £8.0m · 5.6
-- De Cuyper · BHA · £4.9m · 5.6
-- Guéhi · MCI · £6.0m · 4.2
-- Virgil · LIV · £6.5m · 3.5
+- Tarkowski · EVE · £6.2m · 7.3
+- Hall · NEW · £5.3m · 5.7
+- De Cuyper · BHA · £5.0m · 5.3
+- Gvardiol · MCI · £5.7m · 4.6
 
 **MID**
-- B.Fernandes · MUN · £12.0m · 7.1
-- Rogers · CHE · £7.7m · 5.2
-- Rice · ARS · £7.4m · 4.8
-- Semenyo · MCI · £8.4m · 4.0
+- B.Fernandes · MUN · £11.9m · 7.3
+- Groß · BHA · £5.9m · 6.3
+- Schade · BRE · £6.2m · 5.6
+- Rogers · CHE · £7.8m · 5.0
+- Janelt · BRE · £5.0m · 4.2
 
 **FWD**
-- João Pedro · CHE · £7.8m · 4.4
+- Haaland · MCI · £15.6m · 7.3
 
 **Bench**
-- Anderson · MCI · £6.3m · 2.9
-- Obi · MUN · £4.5m · 0.0
-- Neave · NEW · £4.5m · 0.0
-- Dubravka · TOT · £4.0m · 1.4
+- Kostoulas · BHA · £5.6m · 3.7
+- Bogle · LEE · £4.6m · 3.6
+- Calvert-Lewin · LEE · £6.0m · 2.9
+- Leno · FUL · £4.5m · 4.0
 
-## Transfer options (1 move)
-| Out | In | Gain (horizon) | Bank after |
-|---|---|---|---|
-| Virgil (LIV) | Tarkowski (EVE) | +13.5 | £1.9m |
-| Anderson (MCI) | Groß (BHA) | +13.5 | £2.0m |
-| Rice (ARS) | Groß (BHA) | +10.9 | £3.1m |
-| Gabriel (ARS) | Tarkowski (EVE) | +10.2 | £3.4m |
-| Semenyo (MCI) | Groß (BHA) | +9.7 | £4.1m |
-| Anderson (MCI) | Schade (BRE) | +9.5 | £1.7m |
-| Hall (NEW) | Tarkowski (EVE) | +7.9 | £0.6m |
-| Rice (ARS) | Schade (BRE) | +6.9 | £2.8m |
-
-## Captain
-1. B.Fernandes (MUN) — 7.1, 40%
-2. Raya (ARS) — 5.7, 42%
-3. Hall (NEW) — 5.7, 15%
-4. Gabriel (ARS) — 5.6, 23%
-5. De Cuyper (BHA) — 5.6, 26%
+## Captain shortlist
+1. Haaland (MCI) — 7.3, 74%
+2. Tarkowski (EVE) — 7.3, 17%
+3. B.Fernandes (MUN) — 7.3, 38%
+4. Groß (BHA) — 6.3, 30%
+5. Hall (NEW) — 5.7, 18%
 
 ## Bench order
-1. Anderson (MCI) — 2.9
-2. Obi (MUN) — 0.0
-3. Neave (NEW) — 0.0
+1. Kostoulas (BHA) — 3.7
+2. Bogle (LEE) — 3.6
+3. Calvert-Lewin (LEE) — 2.9
 
-## Chip watch
-- No blanks or doubles in the horizon.
-- Bench Boost value this week: **4.3 pts** (hold)
-- Triple Captain on B.Fernandes would add **7.1 pts** (wait for a better week)
-- Squad has multiple problems — wildcard is on the table.
+## Club concentration
+- BHA: 3 players
+- MCI: 2 players
+- BRE: 2 players
+- LEE: 2 players
+_Correlation penalty applied: 0.0 pts_
+
+## Sidelined (excluded or downweighted)
+- Watkins (AVL, £7.8m) — misses 1 of 6 GWs, back: no stated return
+- Kroupi.Jr (BOU, £7.4m) — misses 5 of 6 GWs, back: 2026-11-07
+- Ekitiké (LIV, £7.4m) — misses 3 of 6 GWs, back: unknown
+- Foden (MCI, £6.9m) — misses 1 of 6 GWs, back: no stated return
+- Rodrigo (MCI, £6.5m) — misses 1 of 6 GWs, back: no stated return
+- Kulusevski (TOT, £6.5m) — misses 3 of 6 GWs, back: unknown
+- Martinelli (ARS, £6.3m) — misses 1 of 6 GWs, back: no stated return
+- Mateta (CRY, £6.3m) — misses 1 of 6 GWs, back: 2026-10-11
+- Wilson (LEE, £6.2m) — misses 3 of 6 GWs, back: unknown
+- Elanga (NEW, £6.1m) — misses 3 of 6 GWs, back: unknown
+
+## Near misses (next best by value)
+- Thomas (COV, DEF, £4.0m) — horizon 24.3
+- Davis (IPS, DEF, £4.0m) — horizon 24.3
+- Egan (HUL, DEF, £4.1m) — horizon 23.9
+- Ajayi (HUL, DEF, £4.2m) — horizon 24.1
+- Giles (HUL, DEF, £4.0m) — horizon 22.9
+- Vuskovic (BHA, DEF, £5.0m) — horizon 28.5
+- Dasilva (COV, DEF, £4.0m) — horizon 22.1
+- Justin (LEE, DEF, £4.5m) — horizon 23.6
+- Verbruggen (BHA, GK, £4.5m) — horizon 23.2
+- Guéhi (MCI, DEF, £6.0m) — horizon 30.5
+- Trafford (LEE, GK, £5.0m) — horizon 25.2
+- Mitchell (CRY, DEF, £4.5m) — horizon 22.6
