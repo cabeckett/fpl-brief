@@ -1,6 +1,6 @@
 # FPL week brief — GW6
 
-**Glengad** · overall rank 2,991,463
+**Glengad** · overall rank 2,991,393
 Bank £1.5m  
 _(no cookie set — prices are current, not your selling prices)_
 
@@ -51,10 +51,10 @@ _(no cookie set — prices are current, not your selling prices)_
 
 ## Captain
 1. B.Fernandes (MUN) — 7.3, 38%
-2. Hall (NEW) — 5.7, 18%
-3. De Cuyper (BHA) — 5.3, 28%
-4. Rogers (CHE) — 5.0, 41%
-5. Raya (ARS) — 4.9, 42%
+2. Hall (NEW) — 5.7, 19%
+3. De Cuyper (BHA) — 5.3, 29%
+4. Rogers (CHE) — 5.0, 42%
+5. Raya (ARS) — 4.9, 43%
 
 ## Bench order
 1. Anderson (MCI) — 2.8
