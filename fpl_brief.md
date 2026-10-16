@@ -1,68 +1,63 @@
-# FPL week brief — GW6
+# FPL week brief — GW7
 
-**Glengad** · overall rank 2,991,362
-Bank £1.5m  
+**Glengad** · overall rank 4,226,674
+Bank £0.2m  
 _(no cookie set — prices are current, not your selling prices)_
 
-## Flagged
-- **Obi** (MUN) — Has joined Willem II on loan for the rest of the season (misses ~1 GW)
-- **Neave** (NEW) — Has joined Wolves on loan for the rest of the season (misses ~1 GW)
-
 ## Current squad
-**Cost:** £99.4m / £100.0m
+**Cost:** £101.1m / £100.0m
 
 
 **GK**
-- Raya · ARS · £6.1m · 4.9
+- Raya · ARS · £6.1m · 4.8
 
 **DEF**
-- Hall · NEW · £5.3m · 5.7
-- De Cuyper · BHA · £5.0m · 5.3
-- Gabriel · ARS · £8.0m · 4.9
-- Guéhi · MCI · £6.0m · 4.2
-- Virgil · LIV · £6.5m · 3.9
+- De Cuyper · BHA · £5.1m · 7.3
+- Tarkowski · EVE · £6.2m · 5.3
+- Hall · NEW · £5.3m · 4.5
 
 **MID**
-- B.Fernandes · MUN · £11.9m · 7.3
-- Rogers · CHE · £7.8m · 5.0
-- Semenyo · MCI · £8.4m · 3.8
-- Rice · ARS · £7.4m · 2.9
+- Groß · BHA · £6.0m · 7.4
+- Rogers · CHE · £7.9m · 5.5
+- Saka · ARS · £9.6m · 5.5
+- King · FUL · £5.6m · 4.1
+- Schade · BRE · £6.2m · 3.4
 
 **FWD**
-- João Pedro · CHE · £7.7m · 4.7
+- Haaland · MCI · £15.6m · 8.8
+- João Pedro · CHE · £7.8m · 5.4
 
 **Bench**
-- Anderson · MCI · £6.3m · 2.8
-- Obi · MUN · £4.5m · 0.0
-- Neave · NEW · £4.5m · 0.0
-- Dubravka · TOT · £4.0m · 1.4
+- Barry · EVE · £5.7m · 3.3
+- Silva · BOU · £5.0m · 2.7
+- Affengruber · FUL · £4.5m · 2.2
+- Kinsky · TOT · £4.5m · 4.0
 
 ## Transfer options (1 move)
 | Out | In | Gain (horizon) | Bank after |
 |---|---|---|---|
-| Rice (ARS) | Groß (BHA) | +19.8 | £3.0m |
-| Anderson (MCI) | Groß (BHA) | +19.7 | £1.9m |
-| Rice (ARS) | Schade (BRE) | +14.0 | £2.7m |
-| Anderson (MCI) | Schade (BRE) | +13.9 | £1.6m |
-| Virgil (LIV) | Tarkowski (EVE) | +13.1 | £1.8m |
-| Semenyo (MCI) | Groß (BHA) | +12.8 | £4.0m |
-| Gabriel (ARS) | Tarkowski (EVE) | +12.1 | £3.3m |
-| Rice (ARS) | Gibbs-White (NFO) | +10.8 | £0.9m |
+| Affengruber (FUL) | Bogle (LEE) | +8.1 | £0.0m |
+| Silva (BOU) | Bogle (LEE) | +7.9 | £0.5m |
+| Silva (BOU) | Vuskovic (BHA) | +6.2 | £0.1m |
+| Affengruber (FUL) | Justin (LEE) | +4.9 | £0.2m |
+| Silva (BOU) | Justin (LEE) | +4.7 | £0.7m |
+| Hall (NEW) | Bogle (LEE) | +4.1 | £0.8m |
+| Schade (BRE) | Tavernier (BOU) | +3.9 | £0.3m |
+| Silva (BOU) | Muharemović (LEE) | +3.8 | £0.2m |
 
 ## Captain
-1. B.Fernandes (MUN) — 7.3, 38%
-2. Hall (NEW) — 5.7, 20%
-3. De Cuyper (BHA) — 5.3, 30%
-4. Rogers (CHE) — 5.0, 42%
-5. Raya (ARS) — 4.9, 43%
+1. Haaland (MCI) — 8.8, 76%
+2. Groß (BHA) — 7.4, 41%
+3. De Cuyper (BHA) — 7.3, 37%
+4. Rogers (CHE) — 5.5, 46%
+5. Saka (ARS) — 5.5, 17%
 
 ## Bench order
-1. Anderson (MCI) — 2.8
-2. Obi (MUN) — 0.0
-3. Neave (NEW) — 0.0
+1. Barry (EVE) — 3.3
+2. Silva (BOU) — 2.7
+3. Affengruber (FUL) — 2.2
 
 ## Chip watch
 - No blanks or doubles in the horizon.
-- Bench Boost value this week: **4.2 pts** (hold)
-- Triple Captain on B.Fernandes would add **7.3 pts** (wait for a better week)
-- Squad has multiple problems — wildcard is on the table.
+- Bench Boost value this week: **12.2 pts** (hold)
+- Triple Captain on Haaland would add **8.8 pts** (strong)
