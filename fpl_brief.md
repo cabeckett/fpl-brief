@@ -1,6 +1,6 @@
 # FPL week brief — GW7
 
-**Glengad** · overall rank 4,226,674
+**Glengad** · overall rank 4,226,672
 Bank £0.2m  
 _(no cookie set — prices are current, not your selling prices)_
 
