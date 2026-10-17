@@ -1,30 +1,30 @@
 # FPL week brief — GW7
 
-**Glengad** · overall rank 4,226,672
+**Glengad** · overall rank 4,226,653
 Bank £0.2m  
 _(no cookie set — prices are current, not your selling prices)_
 
 ## Current squad
-**Cost:** £101.1m / £100.0m
+**Cost:** £101.4m / £100.0m
 
 
 **GK**
 - Raya · ARS · £6.1m · 4.8
 
 **DEF**
-- De Cuyper · BHA · £5.1m · 7.3
+- De Cuyper · BHA · £5.2m · 7.3
 - Tarkowski · EVE · £6.2m · 5.3
 - Hall · NEW · £5.3m · 4.5
 
 **MID**
-- Groß · BHA · £6.0m · 7.4
+- Groß · BHA · £6.1m · 7.4
 - Rogers · CHE · £7.9m · 5.5
 - Saka · ARS · £9.6m · 5.5
 - King · FUL · £5.6m · 4.1
 - Schade · BRE · £6.2m · 3.4
 
 **FWD**
-- Haaland · MCI · £15.6m · 8.8
+- Haaland · MCI · £15.7m · 8.8
 - João Pedro · CHE · £7.8m · 5.4
 
 **Bench**
@@ -47,9 +47,9 @@ _(no cookie set — prices are current, not your selling prices)_
 
 ## Captain
 1. Haaland (MCI) — 8.8, 76%
-2. Groß (BHA) — 7.4, 41%
-3. De Cuyper (BHA) — 7.3, 37%
-4. Rogers (CHE) — 5.5, 46%
+2. Groß (BHA) — 7.4, 44%
+3. De Cuyper (BHA) — 7.3, 40%
+4. Rogers (CHE) — 5.5, 47%
 5. Saka (ARS) — 5.5, 17%
 
 ## Bench order
