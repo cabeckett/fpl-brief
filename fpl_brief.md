@@ -1,6 +1,6 @@
 # FPL week brief — GW10
 
-**Glengad** · overall rank 2,720,114
+**Glengad** · overall rank 2,720,110
 Bank £4.5m  
 _(no cookie set — prices are current, not your selling prices)_
 
@@ -47,10 +47,10 @@ _(no cookie set — prices are current, not your selling prices)_
 
 ## Captain
 1. Haaland (MCI) — 8.5, 79%
-2. De Cuyper (BHA) — 6.9, 45%
+2. De Cuyper (BHA) — 6.9, 46%
 3. Tarkowski (EVE) — 6.7, 19%
 4. Raya (ARS) — 6.7, 47%
-5. Tavernier (BOU) — 6.3, 28%
+5. Tavernier (BOU) — 6.3, 29%
 
 ## Bench order
 1. Schade (BRE) — 4.0
