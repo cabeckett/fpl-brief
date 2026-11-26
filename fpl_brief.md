@@ -1,63 +1,67 @@
-# FPL week brief — GW11
+# FPL week brief — GW12
 
-**Glengad** · overall rank 2,068,297
+**Glengad** · overall rank 2,295,048
 Bank £0.8m  
 _(no cookie set — prices are current, not your selling prices)_
 
+## Flagged
+- **Raya** (ARS) — Shoulder injury - 50% chance of playing
+- **Tarkowski** (EVE) — Suspended until 13 Dec (misses ~1 GW)
+
 ## Current squad
-**Cost:** £101.6m / £100.0m
+**Cost:** £101.9m / £100.0m
 
 
 **GK**
-- Raya · ARS · £6.2m · 6.0
+- Kinsky · TOT · £4.4m · 4.3
 
 **DEF**
-- De Cuyper · BHA · £5.5m · 8.3
-- Vuskovic · BHA · £5.3m · 8.1
-- Tarkowski · EVE · £6.2m · 4.8
+- De Cuyper · BHA · £5.5m · 6.9
+- Vuskovic · BHA · £5.3m · 6.4
+- Silva · BOU · £5.1m · 4.4
 
 **MID**
-- Groß · BHA · £6.3m · 7.7
-- Tavernier · BOU · £6.7m · 5.7
-- Rogers · CHE · £8.2m · 5.2
-- Schade · BRE · £6.1m · 4.4
+- Groß · BHA · £6.3m · 6.7
+- Tavernier · BOU · £6.8m · 6.0
+- Rogers · CHE · £8.3m · 5.8
+- Schade · BRE · £6.1m · 4.1
 
 **FWD**
-- Haaland · MCI · £15.8m · 7.8
-- Evanilson · BOU · £6.5m · 5.9
-- Isak · LIV · £9.3m · 5.8
+- Evanilson · BOU · £6.6m · 6.1
+- Isak · LIV · £9.4m · 5.9
+- Haaland · MCI · £15.8m · 5.2
 
 **Bench**
-- Silva · BOU · £5.1m · 4.0
-- King · FUL · £5.5m · 3.0
-- Affengruber · FUL · £4.5m · 2.1
-- Kinsky · TOT · £4.4m · 4.6
+- King · FUL · £5.4m · 3.7
+- Affengruber · FUL · £4.5m · 3.1
+- Tarkowski · EVE · £6.2m · 0.0
+- Raya · ARS · £6.2m · 2.4
 
 ## Transfer options (1 move)
 | Out | In | Gain (horizon) | Bank after |
 |---|---|---|---|
-| Affengruber (FUL) | Muharemović (LEE) | +8.0 | £0.2m |
-| Silva (BOU) | Muharemović (LEE) | +7.8 | £0.8m |
-| Affengruber (FUL) | Van Hecke (TOT) | +7.7 | £0.2m |
-| Affengruber (FUL) | Bogle (LEE) | +7.5 | £0.5m |
-| Silva (BOU) | Van Hecke (TOT) | +7.5 | £0.8m |
-| Silva (BOU) | Bogle (LEE) | +7.3 | £1.1m |
-| Affengruber (FUL) | Justin (LEE) | +4.8 | £0.8m |
-| Silva (BOU) | Justin (LEE) | +4.6 | £1.4m |
+| Tarkowski (EVE) | Bogle (LEE) | +10.5 | £2.2m |
+| Affengruber (FUL) | Bogle (LEE) | +10.0 | £0.5m |
+| Tarkowski (EVE) | Van Hecke (TOT) | +8.5 | £1.8m |
+| Tarkowski (EVE) | Muharemović (LEE) | +8.4 | £1.9m |
+| Silva (BOU) | Bogle (LEE) | +8.3 | £1.1m |
+| Affengruber (FUL) | Van Hecke (TOT) | +8.0 | £0.1m |
+| Affengruber (FUL) | Muharemović (LEE) | +7.9 | £0.2m |
+| Tarkowski (EVE) | Justin (LEE) | +6.8 | £2.5m |
 
 ## Captain
-1. De Cuyper (BHA) — 8.3, 49%
-2. Vuskovic (BHA) — 8.1, 10%
-3. Haaland (MCI) — 7.8, 79%
-4. Groß (BHA) — 7.7, 49%
-5. Raya (ARS) — 6.0, 48%
+1. De Cuyper (BHA) — 6.9, 50%
+2. Groß (BHA) — 6.7, 50%
+3. Vuskovic (BHA) — 6.4, 12%
+4. Evanilson (BOU) — 6.1, 28%
+5. Tavernier (BOU) — 6.0, 34%
 
 ## Bench order
-1. Silva (BOU) — 4.0
-2. King (FUL) — 3.0
-3. Affengruber (FUL) — 2.1
+1. King (FUL) — 3.7
+2. Affengruber (FUL) — 3.1
+3. Tarkowski (EVE) — 0.0
 
 ## Chip watch
 - No blanks or doubles in the horizon.
-- Bench Boost value this week: **13.7 pts** (hold)
-- Triple Captain on De Cuyper would add **8.3 pts** (strong)
+- Bench Boost value this week: **9.2 pts** (hold)
+- Triple Captain on De Cuyper would add **6.9 pts** (wait for a better week)
